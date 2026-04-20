@@ -3,37 +3,305 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Web app demonstration page built without Bootstrap." />
-    <title>Web App</title>
+    <meta name="description" content="Interactive Joke Generator Game" />
+    <title>Joke Generator Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 2rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .game-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .game-container h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .joke-display {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .joke-setup {
+            margin-bottom: 1rem;
+            font-style: italic;
+            color: #555;
+        }
+
+        .joke-punchline {
+            margin-top: 1rem;
+            color: #667eea;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .score {
+            color: #667eea;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .game-container {
+                padding: 1.5rem;
+            }
+
+            button {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html">← Back to Home</a>
     </nav>
+
     <header>
-        <h1>Web App</h1>
-        <p>This page describes a web application concept and is built without Bootstrap.</p>
+        <h1>😄 Joke Generator Game</h1>
+        <p>Click the button below to generate a random joke!</p>
     </header>
+
     <main>
-        <section>
-            <h2>App Purpose</h2>
-            <p>The web app is designed to showcase interactive functionality, responsive design, and user-focused features.</p>
-        </section>
-        <section>
-            <h2>Key Features</h2>
-            <ul>
-                <li>Simple navigation and clear content structure</li>
-                <li>Responsive layout using plain HTML</li>
-                <li>Readable text and a clean visual hierarchy</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Implementation Notes</h2>
-            <p>This page is intentionally built without Bootstrap so the web app content remains lightweight and framework-free.</p>
-        </section>
+        <div class="game-container">
+            <h2>Ready for a Laugh?</h2>
+
+            <div class="joke-display" id="jokeDisplay">
+                <p>Click "Generate Joke" to start!</p>
+            </div>
+
+            <div class="score" id="score">Jokes Generated: 0</div>
+
+            <div class="button-group">
+                <button class="btn-primary" onclick="generateJoke()">Generate Joke</button>
+                <button class="btn-secondary" onclick="revealPunchline()">Reveal Punchline</button>
+                <button class="btn-secondary" onclick="resetGame()">Reset</button>
+            </div>
+        </div>
     </main>
+
     <footer>
         <p><a href="index.html">Back to Home</a></p>
     </footer>
+
+    <script>
+        const jokes = [
+            {
+                setup: "Why don't scientists trust atoms?",
+                punchline: "Because they make up everything!"
+            },
+            {
+                setup: "What do you call a fake noodle?",
+                punchline: "An impasta!"
+            },
+            {
+                setup: "Why did the scarecrow win an award?",
+                punchline: "He was outstanding in his field!"
+            },
+            {
+                setup: "What did one wall say to the other wall?",
+                punchline: "I'll meet you at the corner!"
+            },
+            {
+                setup: "Why don't eggs tell jokes?",
+                punchline: "They'd crack each other up!"
+            },
+            {
+                setup: "What do you call a bear with no teeth?",
+                punchline: "A gummy bear!"
+            },
+            {
+                setup: "Why did the coffee file a police report?",
+                punchline: "It got mugged!"
+            },
+            {
+                setup: "What do you call a fish wearing a bowtie?",
+                punchline: "Sofishticated!"
+            },
+            {
+                setup: "Why don't skeletons fight each other?",
+                punchline: "They don't have the guts!"
+            },
+            {
+                setup: "What's the best thing about Switzerland?",
+                punchline: "I don't know, but the flag is a big plus!"
+            }
+        ];
+
+        let currentJoke = null;
+        let jokeCount = 0;
+        let punchlineRevealed = false;
+
+        function generateJoke() {
+            const randomIndex = Math.floor(Math.random() * jokes.length);
+            currentJoke = jokes[randomIndex];
+            punchlineRevealed = false;
+            jokeCount++;
+
+            const jokeDisplay = document.getElementById('jokeDisplay');
+            jokeDisplay.innerHTML = `
+                <div>
+                    <div class="joke-setup">${currentJoke.setup}</div>
+                    <div class="joke-punchline hidden" id="punchline">${currentJoke.punchline}</div>
+                </div>
+            `;
+
+            document.getElementById('score').textContent = `Jokes Generated: ${jokeCount}`;
+        }
+
+        function revealPunchline() {
+            if (!currentJoke) {
+                alert('Generate a joke first!');
+                return;
+            }
+
+            const punchlineElement = document.getElementById('punchline');
+            if (punchlineElement) {
+                punchlineElement.classList.toggle('hidden');
+                punchlineRevealed = !punchlineRevealed;
+            }
+        }
+
+        function resetGame() {
+            jokeCount = 0;
+            currentJoke = null;
+            punchlineRevealed = false;
+            document.getElementById('jokeDisplay').innerHTML = '<p>Click "Generate Joke" to start!</p>';
+            document.getElementById('score').textContent = 'Jokes Generated: 0';
+        }
+    </script>
 </body>
 </html>

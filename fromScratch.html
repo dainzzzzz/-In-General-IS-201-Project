@@ -3,43 +3,83 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Project from scratch built as a plain HTML page." />
-    <title>Project From Scratch</title>
+    <meta name="description" content="Kobe Bryant fan page created from scratch with handcrafted HTML and CSS." />
+    <title>Kobe Bryant | From Scratch</title>
+    <link rel="stylesheet" href="css/fromscratch.css" />
 </head>
 <body>
-    <nav>
+    <nav class="top-nav">
         <a href="index.html">Home</a>
     </nav>
-    <header>
-        <h1>Project from Scratch</h1>
-        <p>This page is built without Bootstrap to demonstrate clean HTML structure and content organization.</p>
-    </header>
-    <main>
-        <section>
-            <h2>Project Overview</h2>
-            <p>This project was created entirely with plain HTML, showing how content can be organized clearly without using a framework.</p>
-            <ul>
-                <li>Simple, readable layout</li>
-                <li>Semantic HTML structure</li>
-                <li>Plain navigation and content sections</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Features</h2>
-            <p>This page includes:</p>
-            <ul>
-                <li>A header section</li>
-                <li>A descriptive project summary</li>
-                <li>Clear headings and bulleted details</li>
-            </ul>
-        </section>
-        <section>
-            <h2>Why It Matters</h2>
-            <p>Using plain HTML helps keep the project lightweight and easy to maintain, while still delivering a professional presentation.</p>
-        </section>
-    </main>
-    <footer>
+
+    <div class="page-container">
+        <div class="hero">
+            <h1>Kobe Bryant</h1>
+            <p>The Black Mamba</p>
+            <div class="section-links">
+                <a href="#about">About</a> ·
+                <a href="#highlights">Highlights</a> ·
+                <a href="#video">Video</a> ·
+                <a href="#tableau">Tableau</a>
+            </div>
+        </div>
+
+        <div class="content-block" id="about">
+            <h2>About Kobe Bryant</h2>
+            <p>Kobe Dai Bryant was an American professional basketball player who spent his entire 20-season career with the Los Angeles Lakers. He is widely considered one of the greatest basketball players of all time. Born on August 23, 1978, Kobe passed away on January 26, 2020.</p>
+            <p>He inspired the world with his work ethic, scoring ability, and relentless drive. The Kobe Bryant story is also one of reinvention, from athlete to storyteller.</p>
+        </div>
+
+        <div class="content-block image-block">
+            <h2>Kobe in Lakers Gold</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Kobe_Bryant_2014.jpg" alt="Kobe Bryant in Lakers uniform" />
+        </div>
+
+        <div class="content-block" id="highlights">
+            <h2>Career Highlights</h2>
+            <ol>
+                <li>NBA Championships
+                    <ul>
+                        <li>2000, 2001, 2002, 2009, 2010</li>
+                        <li>Won three straight with Shaquille O'Neal</li>
+                    </ul>
+                </li>
+                <li>Personal Awards
+                    <ul>
+                        <li>18× NBA All-Star</li>
+                        <li>15× All-NBA Team</li>
+                        <li>12× All-Defensive Team</li>
+                    </ul>
+                </li>
+                <li>Legacy
+                    <ul>
+                        <li>Black Mamba mentalility</li>
+                        <li>Oscar winner for "Dear Basketball"</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="content-block" id="video">
+            <h2>Highlight Video</h2>
+            <p>Here is a Kobe Bryant highlight reel to show his impact on the court.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/sJXWscXF3t4" title="Kobe Bryant highlight video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="content-block" id="tableau">
+            <h2>Interactive Tableau Visualization</h2>
+            <p>This Tableau visualization is embedded live from Tableau Public and can be explored directly on the page.</p>
+            <div class="tableau-container">
+                <iframe src="https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:showVizHome=no&:embed=y" title="Interactive Tableau visualization" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
         <p><a href="index.html">Back to Home</a></p>
+        <p><a href="post.html">Visit the web app</a></p>
     </footer>
 </body>
 </html>
